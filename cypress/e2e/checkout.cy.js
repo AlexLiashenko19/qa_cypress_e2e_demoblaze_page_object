@@ -8,12 +8,13 @@ describe('', () => {
   it('Should add item to cart, and complete order', () => {
     cy.contains('a', 'Laptops').click();
     cy.contains('a', 'Sony vaio i7').click();
-    cy.contains('a', 'Add to cart').click();
 
     cy.on('window:confirm', (str) => {
       expect(str).to.equal('Product added');
       return true;
     });
+
+    cy.contains('a', 'Add to cart').click();
 
     cy.contains('a', 'Cart').click();
 
